@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+body {
+  background-color: #fff;
+  padding:30px;
+  font: 14px/1.5 'Helvetica', Arial, sans-serif;
+  color: darkslategray;
+  font-weight:400;
+} 
+a {
+    background-color:cadetblue;
+    color:#fff;
+    text-decoration:none;
+}
+ul {
+    list-style-type:none; 
+    padding:10px; 
+    background-color:darkcyan;
+    color: ghostwhite;
+    }
+    
+</style>
+    <head>
+         <p style="font-size: 20px; color: darkslategray;"> Airbnb in <strong>Barcelona</strong>!
+        </p>
+    </head>
+    <body>
+        <p>
+        <a href="http://www.barcelonaturisme.com/wv3/en/">More info about the city</a>
+            
+        <iframe width="100%" height="520" frameborder="0" src="https://robem470.cartodb.com/viz/0ef37564-e002-11e5-ae9c-0ecfd53eb7d3/embed_map" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+        
+        <form action="dogselecta.php">
+            <select name="dog">
+                <option>el Raval</option>
+                <option>Can Baró</option>
+                <option>Ciutat Meridiana</option>
+                <option>Canyelles</option>
+                <option>el Baix Guinardó</option>
+                <option selected>Neighborhood</option>
+            </select>
+        <input type="submit">
+        </form> 
+        <ul>
+            <li><strong>6,828</strong> Private Rooms</li>
+            <li><strong>156</strong> Shared rooms</li>
+            <li><strong>7,871</strong> Entire home/apt</li>
+
+        </ul>
+        </p>
+ 
+    </body>
+</html>
