@@ -1,19 +1,32 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Maps by maribomtempo</title>
+<style>
+body {
+  background-color: #fff;
+  padding:50px;
+  font: 14px/1.5 'Helvetica', Arial, sans-serif;
+  color:#727272;
+  font-weight:400;
+}
 
-  <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
-  <!--
-  Load CartoDB's code so we can pull in our CartoDB maps.
-  -->
-  <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
-  <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
- 
+h1, h2, h3 {
+    color:#801515;
+    margin:0 0 20px;
+    line-height:1.1;
+}
 
-  </head>
-  <body>
+h1 {
+    font-size:28px;
+}
 
+h2, h3 {
+    font-size:18px;
+    }  
+p {
+    padding:50px;
+}
+</style>  
+  
     <script>
     //
     // Initialize map from CartoDB
@@ -22,6 +35,19 @@
     cartodb.createVis('map', 'https://robem470.cartodb.com/api/v2/viz/e79f94da-9d2f-11e5-8a0d-0e787de82d45/viz.json');
     });
     </script>
+
+  <head>
+  <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!--
+  Load CartoDB's code so we can pull in our CartoDB maps.
+  -->
+  <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+  <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+  
+    <title>Maps by maribomtempo</title>
+
+  </head>
+  <body>
 
       <header>
         <h1>Mariana Bomtempo's Maps</h1>
