@@ -2,6 +2,15 @@
 <html>
   <head>
     <title>Maps by maribomtempo</title>
+
+  <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!--
+  Load CartoDB's code so we can pull in our CartoDB maps.
+  -->
+  <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+  <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+ 
+
   </head>
   <body>
 <style>
@@ -30,10 +39,21 @@ p {
     padding:50px;
 }
 </style>
+    <script>
+    //
+    // Initialize map from CartoDB
+    //
+    $(document).ready(function () {
+    cartodb.createVis('map', 'https://robem470.cartodb.com/api/v2/viz/e79f94da-9d2f-11e5-8a0d-0e787de82d45/viz.json');
+    });
+    </script>
+
       <header>
         <h1>Mariana Bomtempo's Maps</h1>
       <section>
         <h3>This is my Assignment 7</h3>
+
+    <div id="map"></div>
 
 <p> This map was created to show the discrepancy relation between land, race and income in the city of Brasilia. When the user clicks on the circles with the income it is possible to get access to the precise number of the income of that area together with the resident population broke into percentage of races.
 
@@ -44,7 +64,6 @@ Above this box the layers can be turned on and off, relating the density, income
     
 Data source: IBGE, 2010. 
 
-<iframe width="100%" height="520" frameborder="0" src="https://robem470.cartodb.com/viz/e79f94da-9d2f-11e5-8a0d-0e787de82d45/embed_map" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe> <br />
 And upload an image, this one is from my photographer friend <a href="http://www.joanafranca.com/">Joana França</a> <br />
 <img src="http://www.joanafranca.com/uploads/5/1/2/5/5125626/3033553_orig.jpg" />
 <iframe width="500" height="500" src="http://www.textexture.com/index.php?text_id=69524&embed=1&width=500&height=500" frameborder="0" allowfullscreen></iframe>
