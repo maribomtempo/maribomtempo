@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+
     <!--
     Load CartoDB's code so we can pull in our CartoDB maps.
     -->
     <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
     <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
-      
-
+    
 <style>
-body {
+body, html {
   background-color: #fff;
   padding:30px;
   font: 14px/1.5 'Helvetica', Arial, sans-serif;
@@ -28,23 +27,22 @@ ul {
     background-color:darkcyan;
     color: ghostwhite;
 }    
-
 #map {
-  height: 100%;
-  width: 100%;
-}
-
+        height: 600px;
+        width: 100%;
+      }
+    
 .neighbourhood-picker {
 position: absolute;
 top: 15px;
 right: 15px;
 }
-    
+    </style>
+
     <script>
       var dataLayer;
       $(document).ready(function () {
-
-        cartodb.createVis('map', 'https://robem470.cartodb.com/api/v2/viz/0ef37564-e002-11e5-ae9c-0ecfd53eb7d3/viz.json')
+          cartodb.createVis('map', 'https://robem470.cartodb.com/api/v2/viz/0ef37564-e002-11e5-ae9c-0ecfd53eb7d3/viz.json')
           .done(function (vis, layers) {
 
             dataLayer = layers[1].getSubLayer(0);
@@ -63,16 +61,17 @@ right: 15px;
         });
       });
     </script>
-  
-         <p style="font-size: 20px; color: darkslategray;"> Airbnb in <strong>Barcelona</strong>!
-        </p>
     </head>
-    <body>
+<body>
+    
+       <p style="font-size: 20px; color: darkslategray;"> Airbnb in <strong>Barcelona</strong>!
+        </p>
         <p>
         <a href="http://www.barcelonaturisme.com/wv3/en/">More info about the city</a>
+
+<div id="map"></div>
+
             
-    <div id="map"></div>
-        
     <select class="neighbourhood-picker">
       <option value="all">Neighborhood</option>
       <option value="el Raval">El Raval</option>
@@ -81,9 +80,7 @@ right: 15px;
       <option value="Nou Barris">Nou Barris</option>
       <option value="">other</option>
     </select>
-
-        <input type="submit">
-        </form> 
+    
         <ul>
             <li><strong>6,828</strong> Private Rooms</li>
             <li><strong>156</strong> Shared rooms</li>
@@ -92,5 +89,5 @@ right: 15px;
         </ul>
         </p>
  
-    </body>
+</body>
 </html>
