@@ -19,18 +19,50 @@ ul {
     padding:10px; 
     background-color:darkcyan;
     color: ghostwhite;
-    }
+}      
+#map {
+  height: 100%;
+  width: 100%;
+}
+.neighbourhood-picker {
+position: absolute;
+top: 15px;
+right: 15px;
+}
     
-</style>
     <script>
-    //
-    // Initialize map from CartoDB
-    //
-    $(document).ready(function () {
-    cartodb.createVis('map', 'https://robem470.cartodb.com/api/v2/viz/0ef37564-e002-11e5-ae9c-0ecfd53eb7d3/viz.json');
-    });
-    </script>
+      var dataLayer;
+      $(document).ready(function () {
+        //
+        // Initialize map from CartoDB: create the map and store the data layer for later
+        //
+        cartodb.createVis('map', 'https://robem470.cartodb.com/api/v2/viz/0ef37564-e002-11e5-ae9c-0ecfd53eb7d3/viz.json')
+          .done(function (vis, layers) {
+            // Store the data layer for later:
+            //  * layers[0] is the base layer (eg OpenStreetMap)
+            //  * layers[1] is where all of your data layers go, and they're stored as "sublayers". The first one is numbered 0, the second is 1, etc. In this case we're getting the first sublayer.
+            dataLayer = layers[1].getSubLayer(0);
+          });
 
+        //
+        // Initialize the borough picker: add an event handler to watch for changes
+        //
+        $('.neighbourhood-picker').change(function () {
+          var neighbourhood = $(this).val();
+          var sql;
+          if (neighbourhood === 'all') {
+            // if neighbourhood is 'all', reset SQL to the original
+            sql = "SELECT * FROM barcelonalistings";
+          }
+          else {
+            // else, select only features with the borough field set to the chosen borough
+            sql = "SELECT * FROM barcelonalistings WHERE neighbourhood = '" + neighbourhood + "'";
+          }
+          dataLayer.setSQL(sql);
+        });
+      });
+    </script>
+    
     <head>
 
     <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -49,15 +81,15 @@ ul {
             
     <div id="map"></div>
         
-        <form action="dogselecta.php">
-            <select name="dog">
-                <option>el Raval</option>
-                <option>Can Baró</option>
-                <option>Ciutat Meridiana</option>
-                <option>Canyelles</option>
-                <option>el Baix Guinardó</option>
-                <option selected>Neighborhood</option>
-            </select>
+    <select class="neighbourhood-picker">
+      <option value="all">Neighborhood</option>
+      <option value="el Raval">El Raval</option>
+      <option value="Canyelles">Canyelles</option>
+      <option value="Ciutat Meridiana">Ciutat Meridiana</option>
+      <option value="Nou Barris">Nou Barris</option>
+      <option value="">other</option>
+    </select>
+
         <input type="submit">
         </form> 
         <ul>
