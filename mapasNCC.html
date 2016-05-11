@@ -1,0 +1,930 @@
+
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2016 by anonymous (http://jsbin.com/vedisulaji/6/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js">
+  </script>
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <meta charset="utf-8">
+  <title>Mapas Projeto Nossa Casa Comum</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.0/css/drawer.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.1.3/iscroll.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.0/js/drawer.min.js"></script>    
+  
+  
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+a {
+  font: 11px Arial, sans-serif;
+ 
+  } 
+  
+#map {
+  width: 100%;
+  height: 100%; 
+}
+
+.checkboxes {
+      background: white;
+      opacity: 0.8;
+      font: 11px Arial, sans-serif;
+      padding: 15px;
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      z-index: 1000;
+  
+}
+    main {
+      height: 100%;
+      width: 100%;
+    }
+
+
+</style>
+</head>
+
+<body class="drawer drawer--left">
+  <header role="banner">
+    <button type="button" class="drawer-toggle drawer-hamburger">
+      <span class="sr-only">toggle navigation</span>
+      <span class="drawer-hamburger-icon"></span>
+    </button>
+    <nav class="drawer-nav" role="navigation">
+      <ul class="drawer-menu">  
+
+<div>
+
+<a>
+  </p>
+<div> <strong>
+Desenho Urbano
+</strong> </div> 
+
+    <div>
+      <input type="checkbox"  class="parques" id="parques"   />
+      <label for="parques" >Áreas de parques by Matheus Luiz</label>
+    </div>
+      
+     <div>
+      <input type="checkbox" class="comercio" id="comercio"   />
+      <label for="comercio">Áreas Comerciais by Artur e Luís Eduardo</label>
+    </div>
+ 
+    <div>
+      <input type="checkbox" class="parquespontos" id="parquespontos"  />
+      <label for="parquespontos">Áreas de Lazer by Matheus Luiz</label>
+    </div>
+    
+     <div>
+      <input type="checkbox" class="pontocomercio" id="pontocomercio"  />
+      <label for="pontocomercio">Pontos Comerciais by Artur e Luís Eduardo</label>
+    </div>
+ 
+     <div>
+      <input type="checkbox" class="sedes_industriais" id="sedes_industriais"  />
+      <label for="sedes_industriais">Sedes Industriais by Guilherme e Giovana Araújo</label>
+    </div>    
+
+     <div>
+      <input type="checkbox" class="zoneamento" id="zoneamento"  />
+      <label for="zoneamento">Zoneamento by Saulo, Guilherme, Artur, William, Luís Eduardo e Giovana Araújo</label>
+    </div>
+   </p>
+<div> <strong>
+Infraestrutura Urbana
+</strong> </div> 
+    
+    <div>
+      <input type="checkbox" class="agua" id="agua"   />
+      <label for="agua">Água by Ana Caroline Souza</label>
+    </div>
+    
+   <div>
+      <input type="checkbox" class="ligacoesagua" id="ligacoesagua"  />
+      <label for="ligacoesagua">Ligações água by Ana Caroline Souza</label>
+    </div>
+    
+    <div>
+      <input type="checkbox" class="energia" id="energia"  />
+      <label for="energia">Energia by Mateus Rodrigues</label>
+    </div>
+    
+    <div>
+      <input type="checkbox" class="linhasenergia" id="linhasenergia"  />
+      <label for="linhasenergia">Ligações de energia by Mateus Rodrigues</label>
+    </div>
+    
+    <div>
+      <input type="checkbox" class="esgoto" id="esgoto"  />
+      <label for="esgoto">Esgoto by Isabelle Thinassi</label>
+    </div>
+ 
+    <div>
+      <input type="checkbox" class="lixo" id="lixo"  />
+      <label for="lixo">Lixo by Ana Carolina Lemos</label>
+    </div>    
+      </p>
+<div> <strong>
+Serviços e Produção Urbanos
+</strong> </div> 
+    
+    <div>
+      <input type="checkbox" class="bombeiro" id="bombeiro"  />
+      <label for="bombeiro">Bombeiro by Gabriela Gaspar</label>
+    </div>
+    
+    <div>
+      <input type="checkbox" class="cultura" id="cultura"  />
+      <label for="cultura">Cultura by Larissa Teixeira</label>
+    </div>    
+    
+    <div>
+      <input type="checkbox" class="educacao" id="educacao"  />
+      <label for="educacao">Educação by Julia Valença</label>
+    </div>
+ 
+     <div>
+      <input type="checkbox" class="policia" id="policia"  />
+      <label for="policia">Polícia by Giovanna Santos</label>
+    </div>
+
+    <div>
+      <input type="checkbox" class="saude" id="saude"  />
+      <label for="saude">Saúde by Carolina Alves</label>
+    </div>
+
+    <div>
+      <input type="checkbox" class="transportes" id="transportes"  />
+      <label for="transportes">Transportes by Giovanna Karoline e Taylor</label>
+    </div>
+
+   </div> 
+  </a>  
+      </ul>
+    </nav>
+  </header>
+  <main role="main">
+    <div id="map"></div>
+  </main>    
+        
+    </body>
+<script>
+
+$(document).ready(function () {
+
+$('.drawer').drawer();
+  
+  
+  var map = L.map('map', {
+            zoomControl: false
+                  }).setView([-15.9825389, -48.2735967], 10);
+
+L.control.zoom({ position: 'topright' }).addTo(map);
+
+L.tileLayer('https://api.mapbox.com/styles/v1/maribomtempo/cimtw073v00otb8m7balnwgye/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFyaWJvbXRlbXBvIiwiYSI6ImNpZ2IzYmg1czFvMDF1dWx4MGlkYXhoNnUifQ.MASXWg9kzNYMgKUtafLeXw').addTo(map);
+
+
+  
+var zoneamento
+$.getJSON('https:/maribomtempo.cartodb.com/api/v2/sql?q=SELECT * FROM zoneamento &format=GeoJSON')
+    .done(function (data) {
+    
+         zoneamento = L.geoJson(data, {
+            onEachFeature: function (feature, layer) {
+              layer.bindPopup('</p><p>Zoneamento' + '</p><p>Categoria: ' + feature.properties.name + '</p>'); 
+            },
+
+        style: function (feature) {
+          var style = {
+            fillColor: '#FFD800',
+            fillOpacity: 0.6,
+            stroke: false,
+            radius: 3
+          };
+          if (feature.properties.name == 'industrial') {
+            style.fillColor = '#8800CC';
+          }
+          else if (feature.properties.name == 'industrial/comercial') {
+            style.fillColor = '#CC2A27';
+          }
+          return style;
+        }
+      }).addTo(map);
+  map.removeLayer(zoneamento);
+    });
+  
+  
+      $('.zoneamento').change(function () {
+        if ($(this).is(':checked')) {
+          map.addLayer(zoneamento);
+          map.setView([-15.80378, -48.09106], 14);
+        }
+        else {
+          map.removeLayer(zoneamento);     
+        }
+      });   
+
+var comercio
+$.getJSON('https:/maribomtempo.cartodb.com/api/v2/sql?q=SELECT * FROM comercio &format=GeoJSON')
+    .done(function (data) {
+    
+         comercio = L.geoJson(data, {
+            onEachFeature: function (feature, layer) {
+              layer.bindPopup('</p><p>' + feature.properties.name + '</p><p>' + feature.properties.descriptio + '</p>'); 
+            },
+            
+            pointToLayer: function (feature, latlng) {
+          return L.circleMarker(latlng);
+        },
+
+        style: function (feature) {
+          var style = {
+            fillColor: 'orange',
+            fillOpacity: 0.6,
+            stroke: false,
+            radius: 5
+          };
+          return style;
+        }
+      }).addTo(map); 
+ map.removeLayer(comercio);
+    });
+  
+      $('.comercio').change(function () {
+        if ($(this).is(':checked')) {
+          map.addLayer(comercio);
+          map.setView([-15.80378, -48.09106], 14);
+
+        }
+        else {
+          map.removeLayer(comercio);     
+        }
+      });   
+  
+var parques
+$.getJSON('https:/maribomtempo.cartodb.com/api/v2/sql?q=SELECT * FROM parques &format=GeoJSON')
+    .done(function (data) {
+    
+         parques = L.geoJson(data, {
+            onEachFeature: function (feature, layer) {
+              layer.bindPopup('</p><p>' + feature.properties.name + '</p>' + '</p><p>Tipo: ' + feature.properties.type + '</p>'); 
+            },
+            
+            pointToLayer: function (feature, latlng) {
+          return L.circleMarker(latlng);
+        },
+
+        style: function (feature) {
+          var style = {
+            fillColor: '#4FA353',
+            fillOpacity: 0.5,
+            stroke: false,
+            radius: 5
+          };
+          return style;
+        }
+      }).addTo(map);
+   map.removeLayer(parques);
+    });
+  
+      $('.parques').change(function () {
+        if ($(this).is(':checked')) {
+          map.addLayer(parques);
+          map.setView([-15.80378, -48.09106], 14);
+
+        }
+        else {
+          map.removeLayer(parques);     
+        }
+      }); 
+  
+  
+var educacao  
+$.getJSON('https:/maribomtempo.cartodb.com/api/v2/sql?q=SELECT * FROM educacao &format=GeoJSON')
+    .done(function (data) {
+    
+         educacao = L.geoJson(data, {
+            onEachFeature: function (feature, layer) {
+              layer.bindPopup('</p><p>Instituição: ' + feature.properties.name + '</p>' + '</p><p>Tipo: ' + feature.properties.type + '</p>' + '</p><p>Descrição: ' + feature.properties.descriptio + '</p>');
+            },
+                pointToLayer: function (feature, latlng) {
+          return L.circleMarker(latlng);
+        },
+        style: function (feature) {
+          var style = {
+            fillColor: '#377DB2',
+            fillOpacity: 1,
+            stroke: false,
+            radius: 4
+          };
+          if (feature.properties.type == 'publico') {
+            style.fillColor = '#35AFC9';
+          }
+          else if (feature.properties.type == 'privado') {
+            style.fillColor = '#3237BF';
+          }
+          else if (feature.properties.type == 'idiomas') {
+            style.fillColor = '#35AFC9';
+          }
+          return style;
+        }
+      }).addTo(map);
+map.removeLayer(educacao);
+    }); 
+  
+      $('.educacao').change(function () {
+        if ($(this).is(':checked')) {
+          map.addLayer(educacao);
+          map.setView([-15.80958, -48.08613], 14);
+
+        }
+        else {
+          map.removeLayer(educacao);     
+        }
+      });
+
+var lixo
+$.getJSON('https:/maribomtempo.cartodb.com/api/v2/sql?q=SELECT * FROM lixo &format=GeoJSON')
+    .done(function (data) {
+    
+         lixo = L.geoJson(data, {
+            onEachFeature: function (feature, layer) {
+              layer.bindPopup('</p><p>' + feature.properties.name + '</p>' + '</p><p>' + feature.properties.type + '</p>' + '</p><p>Descrição: ' + feature.properties.descriptio + '</p>');
+            },
+            
+            pointToLayer: function (feature, latlng) {
+          return L.circleMarker(latlng);
+        },
+           
+
+        style: function (feature) {
+          var style = {
+            fillColor: '#404040',
+            fillOpacity: 0.8,
+            stroke: false,
+            radius: 7
+          };
+         if (feature.properties.type == 'reciclagem') {
+            style.fillColor = '#005E26';
+           style.fillOpacity = 1;
+           style.radius = 3;
+          }
+          return style;
+        }
+      }).addTo(map);
+  map.removeLayer(lixo);
+
+    });
+  
+      $('.lixo').change(function () {
+        if ($(this).is(':checked')) {
+          map.addLayer(lixo);
+          map.setView([-15.825389, -48.1735967], 11);
+        }
+        else {
+          map.removeLayer(lixo);     
+        }
+      });
+
+var energia
+$.getJSON('https:/maribomtempo.cartodb.com/api/v2/sql?q=SELECT * FROM energia &format=GeoJSON')
+    .done(function (data) {
+    
+         energia = L.geoJson(data, {
+            onEachFeature: function (feature, layer) {
+              layer.bindPopup('</p><p>' + feature.properties.name + '</p>' + '</p><p>Tipo: ' + feature.properties.type + '</p>' + '</p><p>' + feature.properties.descriptio + '</p>');
+            },
+            
+            pointToLayer: function (feature, latlng) {
+          return L.circleMarker(latlng);
+        },
+
+
+        style: function (feature) {
+          var style = {
+            fillColor: '#BD0600',
+            fillOpacity: 0.7,
+            stroke: false,
+            radius: 3
+          }
+          if (feature.properties.type == 'usinas') {
+            style.radius = 17;
+          }
+          else if (feature.properties.type == 'subestacao') {
+            style.radius = 8;
+          }
+          return style;
+        }
+      }).addTo(map);   
+    map.removeLayer(energia);
+    });
+  
+      $('.energia').change(function () {
+        if ($(this).is(':checked')) {
+          map.addLayer(energia);
+          map.setView([-15.9825389, -48.2735967], 10);
+        }
+        else {
+          map.removeLayer(energia);     
+        }
+      });  
+  //FIX THIS, ASK ERIC
+  
+var linhasenergia
+$.getJSON('https:/maribomtempo.cartodb.com/api/v2/sql?q=SELECT * FROM linhasenergia &format=GeoJSON')
+    .done(function (data) {
+    
+         linhasenergia = L.geoJson(data).addTo(map); 
+        map.removeLayer(linhasenergia);
+        map.setView([-15.9825389, -48.2735967], 10);
+    });
+  
+      $('.linhasenergia').change(function () {
+        if ($(this).is(':checked')) {
+          map.addLayer(linhasenergia);     
+        }
+        else {
+          map.removeLayer(linhasenergia);     
+        }
+      });   
+  
+  
+var esgoto
+
+$.getJSON('https:/maribomtempo.cartodb.com/api/v2/sql?q=SELECT * FROM esgoto &format=GeoJSON')
+    .done(function (data) {
+    
+         esgoto = L.geoJson(data, {
+            onEachFeature: function (feature, layer) {
+              layer.bindPopup('</p><p>' + feature.properties.name + '</p>' + '</p><p>Tipo: ' + feature.properties.type + '</p>' + '</p><p>' + feature.properties.descriptio + '</p>'); 
+            },
+            
+            pointToLayer: function (feature, latlng) {
+          return L.circleMarker(latlng);
+        },
+
+        style: function (feature) {
+          var style = {
+            fillColor: '#A87F4B',
+            fillOpacity: 1,
+            stroke: false,
+            radius: 5
+          };
+       if (feature.properties.type == 'ETE') {
+            style.radius = 8;
+          }
+          return style;
+        }
+      }).addTo(map);  
+      map.removeLayer(esgoto);
+    });
+  
+      $('.esgoto').change(function () {
+        if ($(this).is(':checked')) {
+          map.addLayer(esgoto);
+          map.setView([-15.90309, -48.09729], 11);
+        }
+        else {
+          map.removeLayer(esgoto);     
+        }
+      });
+    
+
+  
+  
+
+var agua
+$.getJSON('https:/maribomtempo.cartodb.com/api/v2/sql?q=SELECT * FROM agua &format=GeoJSON')
+    .done(function (data) {
+    
+         agua = L.geoJson(data, {
+            onEachFeature: function (feature, layer) {
+              layer.bindPopup('</p><p>' + feature.properties.name + '</p>' + '</p><p>Tipo: ' + feature.properties.type + '</p>' + feature.properties.descriptio + '</p>'); 
+            },
+            
+            pointToLayer: function (feature, latlng) {
+          return L.circleMarker(latlng);
+        },
+
+        style: function (feature) {
+          var style = {
+            fillColor: '#30A0B5',
+            fillOpacity: 0.5,
+            stroke: false,
+            radius: 18
+          };
+          if (feature.properties.type == 'ETA') {
+            style.radius = 9;
+            style.fillOpacity = 0.7;
+          }
+          else if (feature.properties.type == 'CAESB') {
+            style.radius = 4;
+            style.fillOpacity = 0.9;
+          }
+          return style;
+        }
+      }).addTo(map);  
+          map.removeLayer(agua);
+
+    });
+  
+      $('.agua').change(function () {
+        if ($(this).is(':checked')) {
+          map.addLayer(agua);
+          map.setView([-15.80796, -48.07549], 11);
+        }
+        else {
+          map.removeLayer(agua);     
+        }
+      });
+
+    //FIX THIS, ASK ERIC
+var ligacoesagua
+$.getJSON('https:/maribomtempo.cartodb.com/api/v2/sql?q=SELECT * FROM ligacoesagua &format=GeoJSON')
+    .done(function (data) {
+    
+         ligacoesagua = L.geoJson(data).addTo(map);
+         map.removeLayer(ligacoesagua);
+         map.setView([-15.80796, -48.07549], 11);
+    });
+  
+      $('.ligacoesagua').change(function () {
+        if ($(this).is(':checked')) {
+          map.addLayer(ligacoesagua);     
+        }
+        else {
+          map.removeLayer(ligacoesagua);     
+        }
+      });   
+  
+var transportes
+$.getJSON('https:/maribomtempo.cartodb.com/api/v2/sql?q=SELECT * FROM transportes &format=GeoJSON')
+    .done(function (data) {
+    
+         transportes = L.geoJson(data, {
+            onEachFeature: function (feature, layer) {
+              layer.bindPopup('</p><p>' + feature.properties.name + '</p>' + '</p><p>Tipo: ' + feature.properties.type + '</p>'); 
+            },
+            
+            pointToLayer: function (feature, latlng) {
+          return L.circleMarker(latlng);
+        },
+
+        style: function (feature) {
+          var style = {
+            fillColor: '#700032',
+            fillOpacity: 1,
+            stroke: false,
+            radius: 5
+          };
+          if (feature.properties.type == 'metro') {
+            style.fillColor = '#BD0054';
+          }
+          else if (feature.properties.type == 'rodoferro') {
+            style.fillColor = '#BD4B7E';
+          }
+          else if (feature.properties.type == 'onibus') {
+            style.fillColor = '#3D001B';
+          }
+          return style;
+        }
+      }).addTo(map);   
+      map.removeLayer(transportes);
+
+    });
+  
+      $('.transportes').change(function () {
+        if ($(this).is(':checked')) {
+          map.addLayer(transportes);
+          map.setView([-15.825389, -48.0735967], 11);
+
+        }
+        else {
+          map.removeLayer(transportes);     
+        }
+      });
+
+var cultura
+$.getJSON('https:/maribomtempo.cartodb.com/api/v2/sql?q=SELECT * FROM cultura &format=GeoJSON')
+    .done(function (data) {
+    
+         cultura = L.geoJson(data, {
+            onEachFeature: function (feature, layer) {
+              layer.bindPopup('</p><p>' + feature.properties.name + '</p>' + '</p><p>Tipo: ' + feature.properties.type + '</p>' + '</p><p>Descrição: ' + feature.properties.descriptio + '</p>'); 
+            },
+            
+            pointToLayer: function (feature, latlng) {
+          return L.circleMarker(latlng);
+        },
+
+        style: function (feature) {
+          var style = {
+            fillColor: '#C44361',
+            fillOpacity: 1,
+            stroke: false,
+            radius: 5
+          };
+          return style;
+        }
+      }).addTo(map); 
+map.removeLayer(cultura);
+
+    });
+  
+      $('.cultura').change(function () {
+        if ($(this).is(':checked')) {
+          map.addLayer(cultura);  
+          map.setView([-15.82666, -48.08463], 13);
+
+        }
+        else {
+          map.removeLayer(cultura);  
+        }
+      });
+  
+var policia
+$.getJSON('https:/maribomtempo.cartodb.com/api/v2/sql?q=SELECT * FROM policia &format=GeoJSON')
+    .done(function (data) {
+    
+         policia = L.geoJson(data, {
+            onEachFeature: function (feature, layer) {
+              layer.bindPopup('</p><p>Instituição: ' + feature.properties.name + '</p>' + '</p><p>Tipo: ' + feature.properties.type + '</p>'); 
+            },
+            
+            pointToLayer: function (feature, latlng) {
+          return L.circleMarker(latlng);
+        },
+
+          
+        style: function (feature) {
+          var style = {
+            fillColor: '#696968',
+            fillOpacity: 0.5,
+            stroke: false,
+            radius: 10
+          };
+          if (feature.properties.type == 'militar') {
+            style.radius = 3;
+            style.fillOpacity = 1;
+          }
+          else if (feature.properties.type == 'civil') {
+            style.radius = 5;
+            style.fillOpacity = 0.7;
+          }
+          return style;
+        }
+      }).addTo(map);
+    map.removeLayer(policia);
+
+    });
+
+  
+      $('.policia').change(function () {
+        if ($(this).is(':checked')) {
+          map.addLayer(policia);  
+          map.setView([-15.80269, -48.03137], 12);
+
+        }
+        else {
+          map.removeLayer(policia);     
+        }
+      });
+
+var saude
+$.getJSON('https:/maribomtempo.cartodb.com/api/v2/sql?q=SELECT * FROM saude &format=GeoJSON')
+    .done(function (data) {
+    
+         saude = L.geoJson(data, {
+            onEachFeature: function (feature, layer) {
+              layer.bindPopup('</p><p>Instituição: ' + feature.properties.name + '</p>' + '</p><p>Tipo: ' + feature.properties.type + '</p>' + '</p><p>Descrição: ' + feature.properties.descriptio + '</p>'); 
+            },
+            
+            pointToLayer: function (feature, latlng) {
+          return L.circleMarker(latlng);
+        },
+
+        style: function (feature) {
+          var style = {
+            fillColor: '#E94638',
+            fillOpacity: 0.5,
+            stroke: false,
+            radius: 15
+          };
+          if (feature.properties.type == 'hospital') {
+            style.radius = 50;
+            style.fillOpacity = 0.3;
+          }
+          else if (feature.properties.type == 'exames') {
+            style.radius = 9;
+            style.fillOpacity = 0.7;
+          }          
+            else if (feature.properties.type == 'farmacias') {
+            style.radius = 5;
+            style.fillOpacity = 1;
+          }   
+          
+          return style;
+        }
+      }).addTo(map);
+    map.removeLayer(saude);
+
+    });
+  
+      $('.saude').change(function () {
+        if ($(this).is(':checked')) {
+          map.addLayer(saude);
+          map.setView([-15.81265, -48.08167], 15);
+        }
+        else {
+          map.removeLayer(saude);     
+        }
+      }); 
+
+var bombeiro
+$.getJSON('https:/maribomtempo.cartodb.com/api/v2/sql?q=SELECT * FROM bombeiro_1 &format=GeoJSON')
+    .done(function (data) {
+    
+         bombeiro = L.geoJson(data, {
+            onEachFeature: function (feature, layer) {
+              layer.bindPopup('</p><p>Instituição: ' + feature.properties.name + '</p>'); 
+            },
+            
+            pointToLayer: function (feature, latlng) {
+          return L.circleMarker(latlng);
+        },
+
+        style: function (feature) {
+          var style = {
+            fillColor: '#F1A80A',
+            fillOpacity: 0.5,
+            stroke: false,
+            radius: 15
+          };
+          return style;
+        }
+      }).addTo(map);  
+      map.removeLayer(bombeiro);
+    });
+  
+      $('.bombeiro').change(function () {
+        if ($(this).is(':checked')) {
+          map.addLayer(bombeiro);
+          map.setView([-15.81515, -48.02939], 13);
+
+        }
+        else {
+          map.removeLayer(bombeiro);     
+        }
+      });  
+  
+  
+var parquespontos
+$.getJSON('https:/maribomtempo.cartodb.com/api/v2/sql?q=SELECT * FROM parquespontos &format=GeoJSON')
+    .done(function (data) {
+    
+         parquespontos = L.geoJson(data, {
+            onEachFeature: function (feature, layer) {
+              layer.bindPopup('</p><p>Nome: ' + feature.properties.name + '</p>' + '</p><p>Tipo: ' + feature.properties.type + '</p>'); 
+            },
+            
+            pointToLayer: function (feature, latlng) {
+          return L.circleMarker(latlng);
+        },
+
+        style: function (feature) {
+          var style = {
+            fillColor: '#4FA353',
+            fillOpacity: 1,
+            stroke: false,
+            radius: 5
+          };
+
+          if (feature.properties.type == 'passeio') {
+            style.radius = 10;
+            style.fillOpacity = 0.7;
+          }
+          else if (feature.properties.type == 'quadra') {
+            style.radius = 20;
+            style.fillOpacity = 0.5;               
+          }
+          return style;
+        }
+      }).addTo(map);    
+        map.removeLayer(parquespontos);
+
+    });
+  
+      $('.parquespontos').change(function () {
+        if ($(this).is(':checked')) {
+          map.addLayer(parquespontos);
+          map.setView([-15.80565, -48.07930], 15);
+
+        }
+        else {
+          map.removeLayer(parquespontos);     
+        }
+      }); 
+  
+var pontocomercio
+$.getJSON('https:/maribomtempo.cartodb.com/api/v2/sql?q=SELECT * FROM pontocomercio &format=GeoJSON')
+    .done(function (data) {
+    
+         pontocomercio = L.geoJson(data, {
+            onEachFeature: function (feature, layer) {
+              layer.bindPopup('</p><p>Nome: ' + feature.properties.name + '</p>' + '</p><p>Descrição: ' + feature.properties.descriptio + '</p>'); 
+            },
+            
+            pointToLayer: function (feature, latlng) {
+          return L.circleMarker(latlng);
+        },
+
+        style: function (feature) {
+          var style = {
+            fillColor: '#FF9900',
+            fillOpacity: 1,
+            stroke: false,
+            radius: 5
+          };
+          
+          
+          return style;
+        }
+      }).addTo(map); 
+          map.removeLayer(pontocomercio);
+    });
+  
+      $('.pontocomercio').change(function () {
+        if ($(this).is(':checked')) {
+          map.addLayer(pontocomercio);
+          map.setView([-15.80565, -48.07930], 15);
+
+        }
+        else {
+          map.removeLayer(pontocomercio);     
+        }
+      }); 
+
+var sedes_industriais
+$.getJSON('https:/maribomtempo.cartodb.com/api/v2/sql?q=SELECT * FROM sedes_industriais &format=GeoJSON')
+    .done(function (data) {
+    
+         sedes_industriais = L.geoJson(data, {
+            onEachFeature: function (feature, layer) {
+              layer.bindPopup('</p><p>Nome: ' + feature.properties.name + '</p>'); 
+            },
+            
+            pointToLayer: function (feature, latlng) {
+          return L.circleMarker(latlng);
+        },
+
+        style: function (feature) {
+          var style = {
+            fillColor: '#9300A8',
+            fillOpacity: 1,
+            stroke: false,
+            radius: 5
+          };
+          return style;
+        }
+      }).addTo(map);
+            map.removeLayer(sedes_industriais);
+
+    });
+  
+      $('.sedes_industriais').change(function () {
+        if ($(this).is(':checked')) {
+          map.addLayer(sedes_industriais);
+          map.setView([-15.80378, -48.09106], 15);
+        }
+        else {
+          map.removeLayer(sedes_industriais);     
+        }
+      }); 
+
+ 
+
+
+});
+  
+</script>
+</body>
+</html>
